@@ -6,3 +6,6 @@ eureka:
     register-with-eureka: false #不注册到Eureka 中
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000 #配置接口超时时间

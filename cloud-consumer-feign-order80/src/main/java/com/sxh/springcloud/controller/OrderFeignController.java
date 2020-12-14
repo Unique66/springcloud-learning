@@ -28,4 +28,13 @@ public class OrderFeignController {
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         return paymentFeignService.getPaymentById(id);
     }
+
+    /**
+     * 测试OpenFeign 超时控制，OpenFeign 默认等待一秒，超时后会报错
+     * OpenFeign 引入了ribbon，可以添加timeout 配置来避免报错
+     */
+    @GetMapping(value = "/consumer/payment/feign/timeout")
+    public String paymentFeignTimeout(){
+        return paymentFeignService.paymentFeignTimeout();
+    }
 }
