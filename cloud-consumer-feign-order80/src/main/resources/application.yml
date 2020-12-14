@@ -9,3 +9,7 @@ eureka:
 ribbon:
   ReadTimeout: 5000
   ConnectTimeout: 5000 #配置接口超时时间
+
+logging:
+  level:
+    com.sxh.springcloud.service.PaymentFeignService: debug
