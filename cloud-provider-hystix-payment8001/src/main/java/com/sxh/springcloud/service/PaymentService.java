@@ -29,10 +29,12 @@ public class PaymentService {
     /**
      * 失败，测试服务降级
      */
-    @HystrixCommand(fallbackMethod = "paymentInfo_TimeOut_Handler", commandProperties =
-            {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",
-                    value = "3000")}) // 超过3 秒，即执行降级措施
+    @HystrixCommand(fallbackMethod = "paymentInfo_TimeOut_Handler", commandProperties ={
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+    }) // 超过3 秒，即执行服务降级措施
     public String paymentInfo_TimeOut(Integer id) {
+//        int age = 10 / 0; // 出现异常，也执行服务降级
+
         int timeNumber = 5;
         try {
             TimeUnit.SECONDS.sleep(timeNumber);
@@ -40,7 +42,7 @@ public class PaymentService {
             e.printStackTrace();
         }
         return "线程池：" + Thread.currentThread().getName() + "   paymentInfo_TimeOut,id:"
-                + id + "\t" + "呜呜 ┭┮﹏┭┮" + " 耗时(秒)" + timeNumber;
+                + id + "\t" + "呜呜 ┭┮﹏┭┮";
     }
 
     /**
