@@ -13,5 +13,5 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka/
 
 ribbon:
-  ReadTimeout: 5000
-  ConnectTimeout: 5000 #配置接口超时时间
+  ReadTimeout: 10000
+  ConnectTimeout: 10000 #配置接口超时时间
