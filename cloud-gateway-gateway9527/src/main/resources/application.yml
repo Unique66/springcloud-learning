@@ -17,8 +17,10 @@ spring:
             - Path=/payment/get/**   #断言,路径相匹配的进行路由
             - After=2020-12-16T23:38:34.102+08:00[Asia/Shanghai] #断言：此时间过后才可以访问
             - Method=GET #断言：必须是GET 方法
-            - Query=username, \d+ #断言：要有参数名称并且是正整数才能路由
-            - Header=X-Request-Id, \d+   #断言：请求头中要有X-Request-Id属性并且值为整数的正则表达式
+#            - Query=username, \d+ #断言：要有参数名称并且是正整数才能路由
+#            - Header=X-Request-Id, \d+   #断言：请求头中要有X-Request-Id属性并且值为整数的正则表达式
+          filters:
+            - AddRequestParameter=Request-Id-Filter,1024filter #过滤工厂会在匹配的请求头加上次请求头
         - id: payment_routh2
 #          uri: http://localhost:8001
           uri: lb://cloud-payment-service   #负载均衡方式
