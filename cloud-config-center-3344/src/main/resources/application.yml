@@ -14,8 +14,20 @@ spring:
       #测试效果：http://config-3344.com:3344/master/config-test.yml
       #推荐访问方式：/{label}/{application}-{profile}.yml
       #label：分支（branch）    name、application：服务名    profiles：环境（dev/test/prod）
-
+  rabbitmq: #引入rabbitmq
+    host: 169.254.171.100
+    port: 5672
+    username: guest
+    password: guest
+    #消息总线广播测试，一次发送，处处修改：
+    #curl -X POST "http://client-config.com:3344/actuator/bus-refresh"
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'

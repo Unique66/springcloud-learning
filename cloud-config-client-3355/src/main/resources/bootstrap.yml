@@ -18,11 +18,15 @@ spring:
       #3.Controller 层添加@RefreshScope 注解
       #4.前两部完成后启动客户端服务，调用actuator 的refresh接口刷新来动态更新配置文件：
       # curl -X POST "http://client-config.com:3355/actuator/refresh"
+  rabbitmq: #引入rabbitmq
+    host: 169.254.171.100
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka
-
 management:
   endpoints:
     web:
