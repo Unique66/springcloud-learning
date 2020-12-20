@@ -44,10 +44,19 @@ public class OrderController {
     public CommonResult<Payment> getPaymentByEntity(@PathVariable("id") Long id) {
         ResponseEntity<CommonResult> entity = restTemplate.getForEntity(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
         if (entity.getStatusCode().is2xxSuccessful()) {
-            log.info("status code:{}" , entity.getStatusCode() + "\t");
+            log.info("status code:{}", entity.getStatusCode() + "\t");
             return entity.getBody();
         } else {
             return new CommonResult<Payment>(444, "operate failed", null);
         }
+    }
+
+    /**
+     * 测试Sleuth 分布式请求链路跟踪   zipkin+sleuth
+     */
+    @GetMapping("/consumer/payment/zipkin")
+    public String paymentZipkin() {
+        String result = restTemplate.getForObject(PAYMENT_URL + "/payment/zipkin/", String.class);
+        return result;
     }
 }

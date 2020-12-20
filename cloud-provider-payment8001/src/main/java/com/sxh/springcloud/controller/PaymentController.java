@@ -78,4 +78,14 @@ public class PaymentController {
         try { TimeUnit.SECONDS.sleep(3); }catch (Exception e) {e.printStackTrace();}
         return serverPort;
     }
+
+    /**
+     * 测试Sleuth 分布式请求链路跟踪   zipkin+sleuth
+     */
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin()
+    {
+        return "hi ,i'am paymentzipkin server fall back，welcome to bilibili，O(∩_∩)O哈哈~";
+    }
+
 }
