@@ -14,3 +14,9 @@ spring:
 service-url:
   #服务提供者地址，自定义配置
   nacos-user-service: http://nacos-payment-provider
+
+#C 是所有节点在同一时间看到的数据是一致的 Consistency（一致性）
+#A 是所有的请求不管成功或失败都会收到响应 Availability（可用性）
+#P 是系统任意信息的丢失或失败不会影响系统的继续运作 Partition Tolerance（分区容错性）
+#Nacos 切换CP 和AP 模式
+#curl -X PUT '$NACOS_SERVER:8848/nacos/v1/ns/operator/switches?entry=serverMode&value=CP'
