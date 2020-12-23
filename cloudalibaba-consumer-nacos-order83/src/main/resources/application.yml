@@ -16,6 +16,10 @@ spring:
         port: 8719
         dashboard: localhost:8080
 
+#对Feign的支持
+feign:
+  sentinel:
+    enabled: true
 
 service-url:
   #服务提供者地址，自定义配置
