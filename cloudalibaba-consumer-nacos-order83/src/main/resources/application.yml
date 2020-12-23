@@ -10,6 +10,12 @@ spring:
       discovery:
         server-addr: localhost:8848
 
+    #引入sentinel 测试服务熔断功能 和负载均衡搭配
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+
 
 service-url:
   #服务提供者地址，自定义配置
